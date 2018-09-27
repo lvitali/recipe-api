@@ -10,13 +10,24 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.4"
   },
   "scripts": {
-    "dev": "nodemon --exec yarn run babel-node -- ./app.js"
+    "dev": "nodemon --watch 'src/**/**/*' --exec yarn run babel-node -- ./app.js",
+    "test": "mocha --require babel-register ./test/*/*.test.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "koa": "^2.5.3"
+    "import-dir": "^0.0.1",
+    "koa": "^2.5.3",
+    "koa-compose": "^4.1.0",
+    "koa-router": "^7.4.0"
   }
 }
