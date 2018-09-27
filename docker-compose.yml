@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: recipe-api
+    container_name: recipe-api-dev
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - "3000:3000"
+    command: "yarn dev"
+    
+
