@@ -1,12 +1,12 @@
 import Koa from 'koa'
 
-import erroHandler from './application/middleware/error-handler'
+import errorHandler from './application/middleware/errorHandler'
 import checkServiceStatus from './application/middleware/serviceStatus'
 import registerRoutes from './ports/rest'
 
 const app = new Koa()
 
-app.use(erroHandler)
+app.use(errorHandler)
 
 app.use(checkServiceStatus)
 
