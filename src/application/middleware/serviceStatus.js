@@ -1,4 +1,6 @@
-import compose from 'koa-compose'
 import { ping as pingRecipeService } from '../../infrastructure/services/recipeService'
 
-export default async () => await pingRecipeService()
+export default async (ctx, next) => {
+  await pingRecipeService()
+  await next()
+}
