@@ -14,5 +14,8 @@
   },
   "scripts": {
     "dev": "nodemon --exec yarn run babel-node -- ./app.js"
+  },
+  "dependencies": {
+    "koa": "^2.5.3"
   }
 }
