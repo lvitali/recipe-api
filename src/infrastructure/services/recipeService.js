@@ -1,4 +1,4 @@
-import createHttpClient from '../support/httpClientFactory'
+const createHttpClient = require('../support/httpClientFactory')
 
 const httpClient = createHttpClient('http://www.recipepuppy.com/api/')
 
@@ -23,12 +23,10 @@ const searchRecipes = async (ingredients) => {
       throw err
     }
 
-    console.log(err)
-
     const error = new Error('Recipe service is unavailable')
     error.status = 503
     throw error
   }
 }
 
-export { searchRecipes }
+module.exports = { searchRecipes }

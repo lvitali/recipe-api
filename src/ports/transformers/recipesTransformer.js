@@ -5,7 +5,7 @@ const transformRecipes = recipes => recipes.map(recipe => ({
   gif: recipe.gifUrl,
 }))
 
-export default (data) => {
+module.exports = (data) => {
   const { ingredients, recipes } = data
 
   return {

@@ -1,10 +1,10 @@
-import fetchRecipes from '../../../application/interactors/recipeInteractor'
-import { searchRecipes } from '../../../infrastructure/services/recipeService'
-import { searchGif } from '../../../infrastructure/services/gifService'
-import validate from '../../validators/recipeRequestValidator'
-import transformRecipes from '../../transformers/recipesTransformer'
+const fetchRecipes = require('../../../application/interactors/recipeInteractor')
+const { searchRecipes } = require('../../../infrastructure/services/recipeService')
+const { searchGif } = require('../../../infrastructure/services/gifService')
+const validate = require('../../validators/recipeRequestValidator')
+const transformRecipes = require('../../transformers/recipesTransformer')
 
-export default (router) => {
+module.exports = (router) => {
   router.get('/recipes',
     validate,
     async (ctx, next) => {

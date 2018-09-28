@@ -1,11 +1,11 @@
-import Koa from 'koa'
-import path from 'path'
-import { config as initEnv } from 'dotenv'
-import serve from 'koa-static'
-import errorHandler from './application/middleware/errorHandler'
-import registerRoutes from './ports/rest'
+const Koa = require('koa')
+const path = require('path')
+const { config } = require('dotenv')
+const serve = require('koa-static')
+const errorHandler = require('./application/middleware/errorHandler')
+const registerRoutes = require('./ports/rest')
 
-initEnv()
+config()
 
 const app = new Koa()
 
@@ -15,4 +15,4 @@ app.use(registerRoutes())
 
 app.use(serve(path.join(__dirname, '../public')))
 
-export default app
+module.exports = app

@@ -1,3 +1,3 @@
-import server from './src/server'
+const server = require('./src/server')
 
 server.listen(3000)

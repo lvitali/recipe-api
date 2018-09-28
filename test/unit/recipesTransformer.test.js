@@ -1,5 +1,5 @@
-import chai from 'chai'
-import transform from '../../src/ports/transformers/recipesTransformer'
+const chai = require('chai')
+const transform = require('../../src/ports/transformers/recipesTransformer')
 
 const data = {
   ingredients: 'eggs,tomato',

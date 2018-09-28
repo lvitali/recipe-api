@@ -1,8 +1,8 @@
-import Router from 'koa-router'
-import importDir from 'import-dir'
-import compose from 'koa-compose'
+const Router = require('koa-router')
+const importDir = require('import-dir')
+const compose = require('koa-compose')
 
-export default () => {
+module.exports = () => {
   const routes = importDir('./api')
   const router = new Router()
 

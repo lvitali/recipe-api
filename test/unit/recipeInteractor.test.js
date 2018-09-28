@@ -1,5 +1,5 @@
-import chai from 'chai'
-import fetchRecipes from '../../src/application/interactors/recipeInteractor'
+const chai = require('chai')
+const fetchRecipes = require('../../src/application/interactors/recipeInteractor')
 
 const searchRecipesMock = async ingredientSet => [
   {

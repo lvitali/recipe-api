@@ -1,8 +1,8 @@
-import axios from 'axios'
+const axios = require('axios')
 
-export default baseUrl => (
+module.exports = baseUrl => (
   axios.create({
     baseURL: baseUrl,
-    timeout: 2000
+    timeout: 2000,
   })
 )

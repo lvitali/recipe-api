@@ -16,4 +16,4 @@ const fetchRecipes = async (params) => {
   }
 }
 
-export default fetchRecipes
+module.exports = fetchRecipes

@@ -1,6 +1,6 @@
-import chai from 'chai'
-import chaiHttp from 'chai-http'
-import server from '../../src/server'
+const chai = require('chai')
+const chaiHttp = require('chai-http')
+const server = require('../../src/server')
 
 chai.use(chaiHttp)
 
@@ -15,7 +15,7 @@ describe('GET /recipes', () => {
       .end((err, response) => {
         chai.expect(response).to.have.status(200)
         chai.expect(response).to.be.json
-        
+
         done()
       })
   })

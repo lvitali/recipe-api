@@ -1,4 +1,4 @@
-import createHttpClient from '../support/httpClientFactory'
+const createHttpClient = require('../support/httpClientFactory')
 
 const httpClient = createHttpClient('https://api.giphy.com/v1')
 
@@ -16,4 +16,4 @@ const searchGif = async (title) => {
   }
 }
 
-export { searchGif }
+module.exports = { searchGif }
