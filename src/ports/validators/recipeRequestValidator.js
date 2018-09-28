@@ -9,7 +9,7 @@ const checkQsParameters = (request) => {
 }
 
 const checkQsPattern = (request) => {
-  const pattern = /([^0-9]+,){2}/gy
+  const pattern = /([A-z]+,){1}/g
 
   const isValid = pattern.test(request.query.i)
 
