@@ -34,4 +34,4 @@ const validate = async (ctx, next) => {
   await next()
 }
 
-export { validate }
+export default validate
