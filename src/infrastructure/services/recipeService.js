@@ -9,25 +9,26 @@ const throwErrorForEmptyResponse = (ingredients) => {
 }
 
 const searchRecipes = async (ingredients) => {
-  const response = await httpClient.get(`?i=${ingredients}`)
+  try {
+    const response = await httpClient.get(`?i=${ingredients}`)
+    const emptyResponse = response.data.results.length === 0
 
-  const emptyResponse = response.data.results.length === 0
+    if (emptyResponse) {
+      throwErrorForEmptyResponse(ingredients)
+    }
 
-  if (emptyResponse) {
-    throwErrorForEmptyResponse(ingredients)
-  }
+    return response.data.results
+  } catch (err) {
+    if (err.status === 404) {
+      throw err
+    }
 
-  return response.data.results
-}
+    console.log(err)
 
-const ping = async () => {
-  const response = await httpClient.get()
-
-  if (response.status === 503) {
     const error = new Error('Recipe service is unavailable')
     error.status = 503
     throw error
   }
 }
 
-export { searchRecipes, ping }
+export { searchRecipes }
