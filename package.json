@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
     "import-dir": "^0.0.1",
     "koa": "^2.5.3",
     "koa-compose": "^4.1.0",
