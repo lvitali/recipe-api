@@ -1,7 +1,8 @@
-.PHONY: dev install console test teardown help
+.PHONY: dev install console test docs teardown help
 
 dev:
 	make install
+	make docs
 	docker-compose up app
 
 install:
@@ -12,6 +13,9 @@ console:
 
 test:
 	docker-compose run --rm app yarn test
+
+docs:
+	docker-compose run --rm app yarn generate-docs
 
 teardown:
 	docker-compose rm -sf app

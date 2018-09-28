@@ -1,11 +1,12 @@
 {
   "name": "recipe-api",
   "version": "1.0.0",
-  "description": "A simple recipe API",
+  "description": "API para buscar receitas através de ingredientes",
   "main": "app.js",
   "author": "Leonardo <lenardovitalik@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
@@ -21,7 +22,8 @@
   },
   "scripts": {
     "dev": "nodemon --watch 'src/**/**/*' --exec yarn run babel-node -- ./app.js",
-    "test": "mocha --require babel-register ./test/*/*.test.js"
+    "test": "mocha --require babel-register ./test/*/*.test.js",
+    "generate-docs": "yarn run apidoc -i docs -o public"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -29,6 +31,7 @@
     "import-dir": "^0.0.1",
     "koa": "^2.5.3",
     "koa-compose": "^4.1.0",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
   }
 }
