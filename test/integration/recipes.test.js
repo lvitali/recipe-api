@@ -15,6 +15,18 @@ describe('GET /recipes', () => {
       .end((err, response) => {
         chai.expect(response).to.have.status(200)
         chai.expect(response).to.be.json
+        
+        done()
+      })
+  })
+
+  it('must throw an error the ingredients are invalid characters', (done) => {
+    chai.request(app)
+      .get('/recipes?i=$,!,@')
+      .end((err, response) => {
+        chai.expect(response).to.have.status(400)
+        chai.expect(response).to.be.json
+
         done()
       })
   })
