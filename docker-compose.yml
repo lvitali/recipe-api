@@ -9,6 +9,8 @@ services:
       - .:/usr/src/app/
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     command: "yarn dev"
     
 
