@@ -37,7 +37,7 @@ describe('GET /recipes', () => {
       .end((err, response) => {
         chai.expect(response).to.have.status(400)
         chai.expect(response).to.be.json
-        chai.expect(response.text).to.be.equals('{"error":"The i parameter is required in query string e cannot be null"}')
+        chai.expect(response.text).to.be.equals('{"error":"The query string must not be empty"}')
 
         done()
       })
@@ -49,7 +49,7 @@ describe('GET /recipes', () => {
       .end((err, response) => {
         chai.expect(response).to.have.status(400)
         chai.expect(response).to.be.json
-        chai.expect(response.text).to.be.equals('{"error":"Ingredients must be informed in the following pattern eggs,onion"}')
+        chai.expect(response.text).to.be.equals('{"error":"The i parameter is required in query string and cannot be null"}')
 
         done()
       })
@@ -61,7 +61,7 @@ describe('GET /recipes', () => {
       .end((err, response) => {
         chai.expect(response).to.have.status(400)
         chai.expect(response).to.be.json
-        chai.expect(response.text).to.be.equals('{"error":"No máximo 3 ingredientes devem ser informados"}')
+        chai.expect(response.text).to.be.equals('{"error":"Only three ingredients are supported"}')
 
         done()
       })
