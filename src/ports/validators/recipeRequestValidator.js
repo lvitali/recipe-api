@@ -1,37 +1,37 @@
-const checkQsParameters = (request) => {
-  if (!request.query) {
+const checkQsParameters = (query) => {
+  if (Object.keys(query).length === 0) {
     throw new Error('The query string must not be empty')
   }
 
-  if (!('i' in request.query) || request.query === null) {
-    throw new Error('The i parameter is required in query string e cannot be null')
+  if (!('i' in query) || query.i === '') {
+    throw new Error('The i parameter is required in query string and cannot be null')
   }
 }
 
-const checkQsPattern = (request) => {
-  const pattern = /([A-z]+,){1}/g
+const checkQsPattern = (query) => {
+  const pattern = /^([A-z]+,?)*[A-z]$/g
 
-  const isValid = pattern.test(request.query.i)
+  const isValid = pattern.test(query.i)
 
   if (!isValid) {
     throw new Error('Ingredients must be informed in the following pattern eggs,onion')
   }
 }
 
-const validateParametersSize = (value) => {
-  const valuesCount = value.split(',').length
+const validateParametersSize = (query) => {
+  const valuesCount = query.i.split(',').length
 
   if (valuesCount > 3) {
-    throw new Error('No máximo 3 ingredientes devem ser informados')
+    throw new Error('Only three ingredients are supported')
   }
 }
 
-const validate = async (ctx, next) => {
-  checkQsParameters(ctx)
-  checkQsPattern(ctx)
-  validateParametersSize(ctx.query.i)
+const validate = (query) => {
+  checkQsParameters(query)
+  checkQsPattern(query)
+  validateParametersSize(query)
 
-  await next()
+  return true
 }
 
 module.exports = validate

@@ -6,7 +6,10 @@ const transformRecipes = require('../../transformers/recipesTransformer')
 
 module.exports = (router) => {
   router.get('/recipes',
-    validate,
+    async (ctx, next) => {
+      validate(ctx.query)
+      await next()
+    },
     async (ctx, next) => {
       const data = await fetchRecipes({
         ingredients: ctx.query.i,
