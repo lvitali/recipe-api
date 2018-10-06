@@ -1,19 +1,29 @@
+const cacheService = require('../../infrastructure/services/cacheService')
+
 const fetchRecipes = async (params) => {
   const { ingredients, searchRecipes, searchGif } = params
 
+  if (cacheService.hasKey(ingredients)) {
+    return cacheService.get(ingredients)
+  }
+
   const recipes = await searchRecipes(ingredients)
 
-  const promises = recipes.map(async (recipe) => {
+  const getGifForRecipes = recipes.map(async (recipe) => {
     const gifUrl = await searchGif(recipe.title.trim())
     return { ...recipe, gifUrl }
   })
 
-  const recipesWithGif = await Promise.all(promises)
+  const recipesWithGifs = await Promise.all(getGifForRecipes)
 
-  return {
+  const data = {
     ingredients,
-    recipes: recipesWithGif,
+    recipes: recipesWithGifs,
   }
+
+  cacheService.set(ingredients, data)
+
+  return data
 }
 
 module.exports = fetchRecipes
